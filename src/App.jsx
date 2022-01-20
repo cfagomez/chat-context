@@ -8,13 +8,13 @@ function App() {
   const {usuario} = React.useContext(chatContext)
 
   return (
-    <div className="App">
+    <div className="App text-center">
       <Navbar />
       {
         usuario.activo ? (
           <Chat />
         ) : (
-          null
+          <span className='lead'>Debes iniciar sesion</span>
         )
       }
       

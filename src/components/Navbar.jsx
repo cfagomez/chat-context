@@ -6,9 +6,17 @@ const Navbar = () => {
   const {iniciarSesion, cerrarSesion, usuario} = React.useContext(chatContext)
 
   return (
-      <nav className='navbar navbar-dark bg-dark'>
+      <nav className='navbar navbar-dark bg-dark mb-3'>
           <div className="container">
-              <a href="#" className='navbar-brand'>Chat</a>
+              <a href="#" className='navbar-brand'>
+                {
+                  usuario.activo ? (
+                    usuario.username
+                  ) : (
+                    'Chat'
+                  )
+                }
+              </a>
               <div className="d-flex">
                   {
                       usuario.activo ? (

@@ -7,6 +7,7 @@ const ChatProvider = (props) => {
 
   const estadoInicial = {
       email: null,
+      username: null,
       uid: null,
       activo: false
   }  
@@ -23,10 +24,11 @@ const ChatProvider = (props) => {
           if (user) {
             setUsuario({
                 email: user.email,
+                username: user.displayName,
                 uid: user.uid,
                 activo: true
             })
-            //leerMensajes()
+            leerMensajes()
           } else {
             setUsuario(estadoInicial)
           }
@@ -49,6 +51,7 @@ const ChatProvider = (props) => {
 
   const leerMensajes = () => {
       db.collection('chat')
+        .orderBy('fecha')
         .onSnapshot(query => {
             const arrayMensajes = query.docs.map(item => item.data())
             setMensajes(arrayMensajes)
